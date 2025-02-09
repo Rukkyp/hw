@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Product Price</title>
+    <style>
+        .product {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .price {
+            font-size: 16px;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        // ข้อมูลสินค้า (เพิ่ม imageUrl สำหรับรูปภาพและรายละเอียดเพิ่มเติม)
+        const products = [
+            { id: 1, name: 'URTHE - เสื้อยืด แขนสั้น รุ่น URTHE', price: 200, imageUrl: 'https://youarethe.myshopify.com/cdn/shop/files/th-11134207-7r990-lpolbhxxfv9974.jpg?v=1710755327&width=493/150', description: 'เสื้อยืดคุณภาพสูง แขนสั้น เนื้อผ้านุ่มสบายใส่ได้ทุกโอกาส' },
+            { id: 2, name: 'URTHE - เสื้อยืด แขนสั้น รุ่น MEMORIAL SONG', price: 250, imageUrl: 'https://youarethe.myshopify.com/cdn/shop/files/th-11134207-7qukw-ljpazeufuix558_9db7eaf7-ce2e-4793-bf79-ca269b129380.jpg?v=1710142176&width=493/150', description: 'เสื้อยืดสไตล์เท่ ๆ พร้อมลายกราฟิกที่โดดเด่น' },
+            { id: 3, name: 'URTHE - เสื้อยืด เเขนสั้น รุ่นSTRE', price: 390, imageUrl: 'https://youarethe.myshopify.com/cdn/shop/files/STRE1.0-05.jpg?v=1717471357&width=493/150', description: 'เสื้อยืดที่ออกแบบมาเพื่อความสะดวกสบายในการใช้งาน พร้อมลายที่ทันสมัย' }
+        ];
+
+        // ฟังก์ชันในการแสดงรายละเอียดเพิ่มเติม
+        function showDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`Details of ${product.name}:\n${product.description}`);
+            }
+        }
+
+        // ฟังก์ชันเพื่อแสดงสินค้า
+        window.onload = function() {
+            const productContainer = document.getElementById('productContainer');
+            products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <img src="${product.imageUrl}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p class="price">Price: $${product.price}</p>
+                    <button onclick="showDetails(${product.id})">View Details</button>
+                `;
+                productContainer.appendChild(productDiv);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Our Store!</h1>
+
+    <!-- รายการสินค้าจะถูกเพิ่มที่นี่ -->
+    <div id="productContainer"></div>
+
+</body>
+</html>
